@@ -7,7 +7,8 @@
     "password-generator": "./dist/app.js"
   },
   "scripts": {
-    "start": "npm link"
+    "start": "npm link",
+    "stop": "npm unlink"
   },
   "license": "MIT",
   "dependencies": {

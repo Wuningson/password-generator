@@ -1,14 +1,11 @@
 #!/usr/bin/env node
 
-import { createCommand } from 'commander';
 import chalk from 'chalk';
 import clipboardy from 'clipboardy';
-import {
-  encrypt,
-  writeToFile,
-  inputIsValid,
-  passwordGenerator,
-} from './utils/generatePassword';
+import { ProgramOptions } from './types';
+import { createCommand } from 'commander';
+import { writeToFile } from './utils/files';
+import { inputIsValid, passwordGenerator } from './utils/generatePassword';
 
 const main = async () => {
   const log = console.log;
@@ -32,29 +29,18 @@ const main = async () => {
 
   program.parse();
 
-  interface ProgramOptions {
-    characterSet: string;
-    save?: boolean;
-    length?: number;
-    filename: string;
-  }
-
-  const { characterSet, save, length, filename } = program.opts<
-    ProgramOptions
-  >();
-
-  log({ characterSet, save, length, filename });
+  const { characterSet, save, length, filename } =
+    program.opts<ProgramOptions>();
 
   if (inputIsValid(characterSet)) {
     const password = passwordGenerator(characterSet, length);
     if (save) {
-      const hashed = encrypt(password);
-      writeToFile(hashed, filename);
-      log(chalk.blueBright('Encoded password written to file'));
+      writeToFile(password, filename);
+      log(chalk.blueBright(`Password written to file ${filename}.txt\n`));
     }
 
     await clipboardy.write(password);
-    log(chalk.greenBright('Password copied to clipboard'));
+    log(chalk.greenBright('Password copied to clipboard.'));
     process.exit();
   } else {
     log(
