@@ -4,10 +4,10 @@
   "description": "CLI password generator",
   "main": "index.js",
   "bin": {
-    "password-gen": "./dist/app.js"
+    "password-generator": "./dist/app.js"
   },
   "scripts": {
-    "start": "sudo npm link"
+    "start": "npm link"
   },
   "license": "MIT",
   "dependencies": {

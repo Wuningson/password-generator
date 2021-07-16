@@ -1,5 +1,4 @@
 import fs from 'fs';
-import path from 'path';
 import chalk from 'chalk';
 import crypto from 'crypto';
 import randomstring from 'randomstring';
@@ -66,13 +65,12 @@ export const passwordGenerator = (type: CharsetType, length = 8): string => {
 };
 
 export const writeToFile = (hashedPassword: string, fileName: string) => {
-  const currDirectory = path.dirname(fs.realpathSync(__filename));
-
-  fs.writeFile(`${currDirectory}/${fileName}.txt`, hashedPassword, err => {
+  fs.writeFile(`${fileName}.txt`, hashedPassword, err => {
     if (err) {
       log(chalk.redBright(err.message));
+    } else {
+      log(chalk.blueBright('Password file created'));
     }
-    log(chalk.blueBright('Password file created'));
   });
 };
 
