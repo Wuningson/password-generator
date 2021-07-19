@@ -6,8 +6,8 @@ export type CharsetType =
   | 'alphanumeric';
 
 export interface ProgramOptions {
-  characterSet: string;
   save?: boolean;
   length?: number;
   filename: string;
+  characterSet: string;
 }

@@ -7,7 +7,8 @@
     "password-generator": "./dist/app.js"
   },
   "scripts": {
-    "start": "npm link",
+    "build": "tsc",
+    "start": "npm install && npm run build && npm link",
     "stop": "npm unlink"
   },
   "license": "MIT",
@@ -16,7 +17,8 @@
     "chalk": "^4.1.1",
     "clipboardy": "^2.3.0",
     "commander": "^8.0.0",
-    "randomstring": "^1.2.1"
+    "randomstring": "^1.2.1",
+    "typescript": "^4.3.5"
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",

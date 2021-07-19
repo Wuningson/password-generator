@@ -8,7 +8,7 @@ Clone the repository from [GitHub](https://github.com/Wuningson/password-generat
 
 #### Link
 
-To link and make the "password-generator" command available run (sudo might be needed on Linux):
+To install dependencies, link and make the "password-generator" command available run (sudo might be needed on Linux):
 
 ```bash
 yarn start
